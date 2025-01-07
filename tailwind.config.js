@@ -11,8 +11,11 @@ export default {
     extend: {
       fontFamily: {
         "cinzel": ["Cinzel", "serif"]
-      }
+      },
     },
+  },
+  daisyui: {
+    themes: ["light"],
   },
   plugins: [daisyui],
 }
