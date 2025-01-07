@@ -8,7 +8,11 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "cinzel": ["Cinzel", "serif"]
+      }
+    },
   },
   plugins: [daisyui],
 }

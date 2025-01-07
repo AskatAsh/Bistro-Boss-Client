@@ -1,4 +1,7 @@
+/* Google Font - Cinzel */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
+/* @tailwind directives for each of Tailwind’s layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
