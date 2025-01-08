@@ -12,6 +12,13 @@ export default {
       fontFamily: {
         "cinzel": ["Cinzel", "serif"]
       },
+      colors: {
+        text: '#ffffff',
+        background: '#141414',
+        primary: '#eeff25',
+        secondary: '#dddbff',
+        accent: '#eeff25',
+      },
     },
   },
   daisyui: {
