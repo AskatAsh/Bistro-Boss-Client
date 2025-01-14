@@ -6,6 +6,7 @@ import {
   FaShoppingCart,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,24 +14,15 @@ const Navbar = () => {
 
   const navlinks = (
     <>
-      <a to="#home" className="hover:text-accent transition-all duration-200">
+      <NavLink to="/" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
         Home
-      </a>
-      <a to="#about" className="hover:text-accent transition-all duration-200">
-        About
-      </a>
-      <a
-        to="#services"
-        className="hover:text-accent transition-all duration-200"
-      >
-        Services
-      </a>
-      <a
-        to="#contact"
-        className="hover:text-accent transition-all duration-200"
-      >
-        Contact
-      </a>
+      </NavLink>
+      <NavLink to="/contact" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+        Contact Us
+      </NavLink>
+      <NavLink to="/contact" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+        About Us
+      </NavLink>
     </>
   );
 
@@ -39,28 +31,38 @@ const Navbar = () => {
       <div className="max-w-[1440px] mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
         <div className="text-2xl font-semibold">
-          <a href="/" className="text-text font-cinzel flex flex-col">
-            <span className="font-black text-base sm:text-xl lg:text-2xl tracking-wider">BISTRO BOSS</span>
-            <span className="text-sm sm:text-lg lg:text-xl tracking-[0.25em] md:tracking-[0.3em]">RESTAURANT</span>
-          </a>
+          <Link href="/" className="text-text font-cinzel flex flex-col">
+            <span className="font-black text-base sm:text-xl lg:text-2xl tracking-wider">
+              BISTRO BOSS
+            </span>
+            <span className="text-sm sm:text-lg lg:text-xl tracking-[0.25em] md:tracking-[0.3em]">
+              RESTAURANT
+            </span>
+          </Link>
         </div>
 
         <div className="flex items-center justify-end gap-4">
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex gap-6 lg:gap-8 uppercase font-medium">{navlinks}</nav>
+          <nav className="hidden md:flex gap-6 lg:gap-8 uppercase font-medium">
+            {navlinks}
+          </nav>
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">
             {isLoggedIn ? (
               <>
-                <span className="flex items-center gap-1">
-                  <span className="max-[500px]:hidden uppercase font-medium">Our Shop </span>
-                  <FaShoppingCart className="text-lg cursor-pointer hover:text-accent" />
-                </span>
-                <span className="flex items-center gap-1">
-                  <span className="max-[500px]:hidden uppercase font-medium">Sign Out </span>
-                  <FaSignOutAlt className="text-xl cursor-pointer hover:text-accent" />
-                </span>
+                <button className="flex items-center gap-1 hover:text-accent">
+                  <span className="max-[500px]:hidden uppercase font-medium">
+                    Our Shop{" "}
+                  </span>
+                  <FaShoppingCart className="text-lg cursor-pointer" />
+                </button>
+                <button className="flex items-center gap-1 hover:text-accent">
+                  <span className="max-[500px]:hidden uppercase font-medium">
+                    Sign Out{" "}
+                  </span>
+                  <FaSignOutAlt className="text-xl cursor-pointer" />
+                </button>
                 <FaUserCircle className="text-2xl cursor-pointer hover:text-accent" />
               </>
             ) : (
