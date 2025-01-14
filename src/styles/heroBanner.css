@@ -1,0 +1,11 @@
+.carousel-root .carousel .thumbs-wrapper .thumbs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width: 1000px) {
+    .carousel-root .carousel-slider .slider-wrapper{
+        height: 80vh !important;
+    }
+}
