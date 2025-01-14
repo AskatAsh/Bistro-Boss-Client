@@ -1,14 +1,12 @@
-import Navbar from "./components/common/Navbar"
-import HeroBanner from "./components/sections/HeroBanner"
+import { RouterProvider } from "react-router-dom"
+import router from './routes/router';
 
 function App() {
 
   return (
     <>
-      
-      <Navbar />
-      <HeroBanner />
-      
+      <RouterProvider router={router}>
+      </RouterProvider>      
     </>
   )
 }
