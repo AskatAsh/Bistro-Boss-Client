@@ -1,4 +1,4 @@
-import HeroBanner from "./../components/sections/HeroBanner";
+import HeroBanner from "./sections/HeroBanner";
 
 const Home = () => {
   return (
