@@ -1,3 +1,4 @@
+// import images for hero banner section in home page
 import img1 from '../../src/assets/home/01.jpg';
 import img2 from '../../src/assets/home/02.jpg';
 import img3 from '../../src/assets/home/03.png';
@@ -19,4 +20,14 @@ import slide5 from '../../src/assets/home/slide5.jpg'
 
 export const categoryImages = [slide1, slide2, slide3, slide4, slide5];
 
+// export category names
 export const categories = ["Salad", "Pizza", "Soup", "Desert", "Fruits"];
+
+// import home banner background image and export with content
+import homeBannerImage from '../../src/assets/home/chef-service.jpg'
+
+export const homeBannerContent = {
+    title: "Bistro Boss",
+    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo.",
+    bgImage: homeBannerImage,
+}
