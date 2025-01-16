@@ -25,7 +25,7 @@ const Banner = (props) => {
         className={`flex items-center justify-center text-center ${
           dark
             ? "bg-dark1/60 text-white py-16 md:py-32 px-4 sm:px-8 md:px-12 lg:px-24"
-            : "bg-white py-12 md:py-28 px-4 sm:px-8 md:px-12 lg:px-24"
+            : "bg-white/90 py-12 md:py-28 px-4 sm:px-8 md:px-12 lg:px-24"
         }`}
       >
         <div

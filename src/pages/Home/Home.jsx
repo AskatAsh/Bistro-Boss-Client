@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <HeroBanner />
       <Categories />
-      <Banner bgImage={homeBannerContent?.bgImage} title={homeBannerContent?.title} description={homeBannerContent?.description} dark={true} />
+      <Banner bgImage={homeBannerContent?.bgImage} title={homeBannerContent?.title} description={homeBannerContent?.description} dark={false} />
       <PopularMenu />
     </>
   );
