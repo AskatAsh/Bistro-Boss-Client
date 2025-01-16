@@ -4,10 +4,12 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../../../src/styles/categories.css";
 import { categoryImages, categories } from "../../../constants";
+import SectionTitle from "../../../components/common/SectionTitle";
 
 const Categories = () => {
   return (
     <section className="max-w-[1320px] w-11/12 mx-auto mb-12">
+      <SectionTitle title="Order Online" subtitle="From 11:00am to 10:00pm" />
       <Swiper
         slidesPerView={4}
         spaceBetween={30}

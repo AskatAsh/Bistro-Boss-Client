@@ -2,8 +2,8 @@ import { PropTypes } from "prop-types";
 
 const SectionTitle = (props) => {
   const {
-    subtitle = "Check it out",
-    title = "From our menu",
+    subtitle = "Section Subtitle",
+    title = "Section Title",
     bgdark = false,
   } = props;
   return (
