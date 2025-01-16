@@ -8,6 +8,8 @@ import useGetReviews from "./../../../Hooks/useGetReviews";
 import SectionTitle from "../../../components/common/SectionTitle";
 import { Rating, Star } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+// custom css styles
+import '../../../styles/testimonials.css'
 
 const Testimonials = () => {
   const [reviews] = useGetReviews();

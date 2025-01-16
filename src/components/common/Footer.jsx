@@ -6,16 +6,19 @@ const Footer = () => {
       {/* Gradient Background */}
       <div className="grid grid-cols-1 sm:grid-cols-2">
         {/* Left Section - First Gradient Color */}
-        <div className="bg-footerbg1 px-4 py-16 text-center">
+        <div className="bg-footerbg1 px-4 py-16 text-center flex justify-center sm:justify-end sm:pr-8 md:pr-16 xl:pr-32">
+          <div>
           <h2 className="text-lg font-semibold mb-2">CONTACT US</h2>
           <p>123 ABS Street, Uni 21, Bangladesh</p>
           <p>+88 123456789</p>
           <p>Mon - Fri: 08:00 - 22:00</p>
           <p>Sat - Sun: 10:00 - 23:00</p>
+          </div>
         </div>
 
         {/* Right Section - Second Gradient Color */}
-        <div className="bg-footerbg2 px-4 py-16 text-center">
+        <div className="bg-footerbg2 px-4 py-16 text-center flex justify-center sm:justify-start sm:pl-8 md:pl-16 xl:pl-32">
+          <div>
           <h2 className="text-lg font-semibold mb-2">Follow US</h2>
           <p>Join us on social media</p>
           <div className="flex justify-center gap-4 mt-2">
@@ -40,6 +43,7 @@ const Footer = () => {
             >
               <FaTwitter />
             </a>
+          </div>
           </div>
         </div>
       </div>
