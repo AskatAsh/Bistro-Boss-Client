@@ -1,6 +1,7 @@
 import MenuItem from "../../../components/common/MenuItem";
 import useGetMenu from "../../../Hooks/useGetMenu";
 import SectionTitle from "./../../../components/common/SectionTitle";
+import Button from './../../../components/common/Button';
 
 const PopularMenu = () => {
   const [menu] = useGetMenu();
@@ -14,9 +15,7 @@ const PopularMenu = () => {
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
-      <button className="btn btn-outline border-0 border-b-4 mt-4">
-        View Full Menu
-      </button>
+      <Button btnText="View full menu" btnStyles="text-footerbg1 block mx-auto px-8 my-8" />
     </section>
   );
 };
