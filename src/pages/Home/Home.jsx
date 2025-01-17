@@ -5,13 +5,22 @@ import { homeBannerContent } from "../../constants";
 import PopularMenu from "./sections/PopularMenu";
 import Featured from "./sections/Featured";
 import Testimonials from "./sections/Testimonails";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <>
+      <Helmet>
+        <title>Bistro Boss | Home</title>
+      </Helmet>
       <HeroBanner />
       <Categories />
-      <Banner bgImage={homeBannerContent?.bgImage} title={homeBannerContent?.title} description={homeBannerContent?.description} dark={false} />
+      <Banner
+        bgImage={homeBannerContent?.bgImage}
+        title={homeBannerContent?.title}
+        description={homeBannerContent?.description}
+        dark={false}
+      />
       <PopularMenu />
       <Featured />
       <Testimonials />
