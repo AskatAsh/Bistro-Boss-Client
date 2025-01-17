@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  FaBars,
-  FaTimes,
-  FaUserCircle,
-  FaSignOutAlt,
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../../src/assets/icon/cart-100.png";
 
@@ -14,18 +9,99 @@ const Navbar = () => {
 
   const navlinks = (
     <>
-      <NavLink to="/" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+      <NavLink
+        to="/"
+        onClick={() => setIsMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive
+            ? "text-accent"
+            : "hover:text-accent transition-all duration-200"
+        }
+      >
         Home
       </NavLink>
-      <NavLink to="/contact" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+      <NavLink
+        to="/contact"
+        onClick={() => setIsMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive
+            ? "text-accent"
+            : "hover:text-accent transition-all duration-200"
+        }
+      >
         Contact Us
       </NavLink>
-      <NavLink to="/contact" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+      <NavLink
+        to="/contact"
+        onClick={() => setIsMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive
+            ? "text-accent"
+            : "hover:text-accent transition-all duration-200"
+        }
+      >
         About Us
       </NavLink>
-      <NavLink to="/menu" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+      <NavLink
+        to="/menu"
+        onClick={() => setIsMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive
+            ? "text-accent"
+            : "hover:text-accent transition-all duration-200"
+        }
+      >
         Our Menu
       </NavLink>
+      {isLoggedIn ? (
+        <>
+          <NavLink
+            to="/shop"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) =>
+              isActive
+                ? "text-accent flex items-center"
+                : "hover:text-accent transition-all duration-200 flex items-center"
+            }
+          >
+            <span className="max-[500px]:hidden uppercase font-medium text-base">
+              Our Shop{" "}
+            </span>
+            <img className="w-8" src={cartIcon} alt="shopping cart icon" />
+          </NavLink>
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            className="flex items-center gap-1 hover:text-accent"
+          >
+            <span className="max-[500px]:hidden uppercase font-medium text-base">
+              Sign Out{" "}
+            </span>
+            <FaSignOutAlt className="text-xl cursor-pointer" />
+          </button>
+          <NavLink
+            to="/profile"
+            onClick={() => setIsMenuOpen(false)}
+            className={({ isActive }) =>
+              isActive
+                ? "text-accent flex items-center"
+                : "hover:text-accent transition-all duration-200 flex items-center"
+            }
+          >
+            <span className="uppercase font-medium mr-1 text-base">
+              My Profile
+            </span>
+            <FaUserCircle className="text-2xl cursor-pointer hover:text-accent" />
+          </NavLink>
+        </>
+      ) : (
+        <NavLink
+          to="/auth/login"
+          onClick={() => setIsMenuOpen(false)}
+          className="bg-[rgba(238,255,37,1)] text-black px-4 py-2 rounded-md hover:bg-yellow-300 uppercase font-medium"
+        >
+          Login
+        </NavLink>
+      )}
     </>
   );
 
@@ -46,40 +122,12 @@ const Navbar = () => {
 
         <div className="flex items-center justify-end gap-4">
           {/* Desktop Nav Links */}
-          <nav className="hidden md:flex gap-6 lg:gap-8 uppercase font-medium">
+          <nav className="hidden lg:flex items-center gap-6 uppercase font-medium">
             {navlinks}
           </nav>
 
-          {/* User Actions */}
-          <div className="flex items-center space-x-4">
-            {isLoggedIn ? (
-              <>
-                <button className="flex items-center gap-1 hover:text-accent">
-                  <span className="max-[500px]:hidden uppercase font-medium">
-                    Our Shop{" "}
-                  </span>
-                  <img className="w-8" src={cartIcon} alt="shopping cart icon" />
-                </button>
-                <button className="flex items-center gap-1 hover:text-accent">
-                  <span className="max-[500px]:hidden uppercase font-medium">
-                    Sign Out{" "}
-                  </span>
-                  <FaSignOutAlt className="text-xl cursor-pointer" />
-                </button>
-                <FaUserCircle className="text-2xl cursor-pointer hover:text-accent" />
-              </>
-            ) : (
-              <a
-                href="#login"
-                className="bg-[rgba(238,255,37,1)] text-black px-4 py-2 rounded-md hover:bg-yellow-300 uppercase font-medium"
-              >
-                Login
-              </a>
-            )}
-          </div>
-
           {/* Mobile Menu Icon */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <FaBars
               className="text-xl cursor-pointer hover:text-accent"
               onClick={() => setIsMenuOpen(true)}
@@ -98,35 +146,8 @@ const Navbar = () => {
           />
 
           {/* Mobile Nav Links */}
-          <nav className="flex flex-col items-center space-y-6 text-xl">
-            <a
-              to="#home"
-              onClick={() => setIsMenuOpen(false)}
-              className="hover:text-accent"
-            >
-              Home
-            </a>
-            <a
-              to="#about"
-              onClick={() => setIsMenuOpen(false)}
-              className="hover:text-accent"
-            >
-              About
-            </a>
-            <a
-              to="#services"
-              onClick={() => setIsMenuOpen(false)}
-              className="hover:text-accent"
-            >
-              Services
-            </a>
-            <a
-              to="#contact"
-              onClick={() => setIsMenuOpen(false)}
-              className="hover:text-accent"
-            >
-              Contact
-            </a>
+          <nav className="flex flex-col items-center space-y-6 text-lg">
+            {navlinks}
           </nav>
         </div>
       )}
