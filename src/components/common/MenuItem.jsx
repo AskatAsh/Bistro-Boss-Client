@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 const MenuItem = ({ item }) => {
   const { name, image, price, recipe } = item;
   return (
-    <div className="flex items-start space-x-2">
+    <div className="flex items-start space-x-4">
       <img
         style={{ borderRadius: "0 200px 200px 200px" }}
         className="w-24 h-24 object-cover"
