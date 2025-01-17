@@ -10,13 +10,6 @@ import { useState } from "react";
 
 const Shop = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const [key, setKey] = useState(0);
-
-  const handleTabSelect = (index) => {
-
-    setTabIndex(index);
-    setKey(key + 1); // Force re-render by updating the key
-  };
 
   return (
     <>
@@ -32,7 +25,7 @@ const Shop = () => {
       />
 
       <Spacer height="h-32" />
-      <Tabs defaultIndex={tabIndex} onSelect={handleTabSelect}>
+      <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>Salad</Tab>
           <Tab>Pizza</Tab>

@@ -10,6 +10,9 @@
   margin: 0 0 10px;
   padding: 0;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
 }
 
 .react-tabs__tab {
@@ -18,8 +21,11 @@
   bottom: -1px;
   position: relative;
   list-style: none;
-  padding: 6px 12px;
+  padding: 6px 0px;
   cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #151515;
 }
 
 .react-tabs__tab--selected {
