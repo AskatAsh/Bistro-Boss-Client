@@ -3,10 +3,10 @@ import {
   FaBars,
   FaTimes,
   FaUserCircle,
-  FaShoppingCart,
   FaSignOutAlt,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
+import cartIcon from "../../../src/assets/icon/cart-100.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,7 +58,7 @@ const Navbar = () => {
                   <span className="max-[500px]:hidden uppercase font-medium">
                     Our Shop{" "}
                   </span>
-                  <FaShoppingCart className="text-lg cursor-pointer" />
+                  <img className="w-8" src={cartIcon} alt="shopping cart icon" />
                 </button>
                 <button className="flex items-center gap-1 hover:text-accent">
                   <span className="max-[500px]:hidden uppercase font-medium">
