@@ -1,17 +1,12 @@
-import useGetMenu from "../../Hooks/useGetMenu";
 import Button from "../common/Button";
 import MenuItem from "../common/MenuItem";
-import SectionTitle from "../common/SectionTitle";
+import { PropTypes } from 'prop-types';
 
-const Offer = () => {
-  const [menu] = useGetMenu();
-  const offered = menu.filter((item) => item.category === "offered");
-
+const Offer = ({menu}) => {
   return (
     <section className="max-w-[1320px] w-11/12 mx-auto">
-      <SectionTitle title="Today's Offer" subtitle="Don't miss" />
       <div className="grid md:grid-cols-2 gap-10">
-        {offered.map((item) => (
+        {menu.map((item) => (
           <MenuItem key={item._id} item={item}></MenuItem>
         ))}
       </div>
@@ -22,5 +17,9 @@ const Offer = () => {
     </section>
   );
 };
+
+Offer.propTypes = {
+  menu: PropTypes.array,
+}
 
 export default Offer;
