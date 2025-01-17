@@ -3,8 +3,21 @@ import Banner from "../../components/common/Banner";
 import shopBannerImage from "../../../src/assets/shop/banner2.jpg";
 import ItemCard from "../../components/shop/ItemCard";
 import Spacer from "../../components/common/Spacer";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import "../../styles/shop.css";
+import { useState } from "react";
 
 const Shop = () => {
+  const [tabIndex, setTabIndex] = useState(0);
+  const [key, setKey] = useState(0);
+
+  const handleTabSelect = (index) => {
+
+    setTabIndex(index);
+    setKey(key + 1); // Force re-render by updating the key
+  };
+
   return (
     <>
       <Helmet>
@@ -19,6 +32,31 @@ const Shop = () => {
       />
 
       <Spacer height="h-32" />
+      <Tabs defaultIndex={tabIndex} onSelect={handleTabSelect}>
+        <TabList>
+          <Tab>Salad</Tab>
+          <Tab>Pizza</Tab>
+          <Tab>Soups</Tab>
+          <Tab>Desserts</Tab>
+          <Tab>Drinks</Tab>
+        </TabList>
+
+        <TabPanel>
+          <h2>Any content 1</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+        <TabPanel>
+          <h2>Any content 2</h2>
+        </TabPanel>
+      </Tabs>
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
         <ItemCard />
         <ItemCard />
