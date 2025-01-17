@@ -7,9 +7,16 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../styles/shop.css";
 import { useState } from "react";
+import useGetMenu from "../../Hooks/useGetMenu";
 
 const Shop = () => {
   const [tabIndex, setTabIndex] = useState(0);
+  const [menu] = useGetMenu();
+  const dessert = menu.filter((item) => item.category === "dessert");
+  const pizza = menu.filter((item) => item.category === "pizza");
+  const salad = menu.filter((item) => item.category === "salad");
+  const soup = menu.filter((item) => item.category === "soup");
+  const drinks = menu.filter((item) => item.category === "drinks");
 
   return (
     <>
@@ -25,35 +32,52 @@ const Shop = () => {
       />
 
       <Spacer height="h-32" />
-      <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <TabList>
-          <Tab>Salad</Tab>
-          <Tab>Pizza</Tab>
-          <Tab>Soups</Tab>
-          <Tab>Desserts</Tab>
-          <Tab>Drinks</Tab>
-        </TabList>
+      <section>
+        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+          <TabList>
+            <Tab>Salad</Tab>
+            <Tab>Pizza</Tab>
+            <Tab>Soups</Tab>
+            <Tab>Desserts</Tab>
+            <Tab>Drinks</Tab>
+          </TabList>
 
-        <TabPanel>
-          <h2>Any content 1</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-        <TabPanel>
-          <h2>Any content 2</h2>
-        </TabPanel>
-      </Tabs>
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-        <ItemCard />
-        <ItemCard />
-        <ItemCard />
+          <TabPanel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
+              {salad.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
+              {pizza.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
+              {soup.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
+              {dessert.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </div>
+          </TabPanel>
+          <TabPanel>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
+              {drinks.map((item) => (
+                <ItemCard key={item._id} item={item} />
+              ))}
+            </div>
+          </TabPanel>
+        </Tabs>
       </section>
       <Spacer height="h-32" />
     </>
