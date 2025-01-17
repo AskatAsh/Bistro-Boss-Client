@@ -7,6 +7,7 @@ const Banner = (props) => {
     description = "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     dark = false,
     cover = false,
+    fixed = false,
   } = props;
 
   if (cover) {
@@ -43,7 +44,7 @@ const Banner = (props) => {
         dark
           ? "w-full py-16 md:py-32 px-4 sm:px-8 md:px-16 lg:px-32"
           : "max-w-[1320px] w-11/12 mx-auto py-12 md:py-28 px-4 sm:px-8 md:px-16 lg:px-28"
-      }`}
+      } ${fixed ? "bg-fixed" : ""}`}
       style={{
         backgroundImage: `url(${bgImage})`,
         backgroundSize: "cover",
@@ -84,6 +85,7 @@ Banner.propTypes = {
   description: PropTypes.string,
   dark: PropTypes.bool,
   cover: PropTypes.bool,
+  fixed: PropTypes.bool,
 };
 
 export default Banner;
