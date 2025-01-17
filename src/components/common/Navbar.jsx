@@ -23,6 +23,9 @@ const Navbar = () => {
       <NavLink to="/contact" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
         About Us
       </NavLink>
+      <NavLink to="/menu" className={({isActive}) => isActive ? "text-accent" : "hover:text-accent transition-all duration-200"}>
+        Our Menu
+      </NavLink>
     </>
   );
 
