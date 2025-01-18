@@ -5,7 +5,7 @@ const useGetReviews = () => {
 
   useEffect(() => {
     try {
-      fetch("../../src/constants/reviews.json")
+      fetch(`${import.meta.env.VITE_SERVER}/reviews`)
         .then((res) => res.json())
         .then((data) => setReviews(data));
     } catch (err) {
