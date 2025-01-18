@@ -8,6 +8,7 @@ import "react-tabs/style/react-tabs.css";
 import "../../styles/shop.css";
 import { useState } from "react";
 import useGetMenu from "../../Hooks/useGetMenu";
+import { useParams } from "react-router-dom";
 
 const Shop = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -17,6 +18,8 @@ const Shop = () => {
   const salad = menu.filter((item) => item.category === "salad");
   const soup = menu.filter((item) => item.category === "soup");
   const drinks = menu.filter((item) => item.category === "drinks");
+  const { category } = useParams();
+  console.log(category);
 
   return (
     <>

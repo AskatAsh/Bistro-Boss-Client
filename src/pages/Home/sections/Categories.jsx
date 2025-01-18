@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "../../../../src/styles/categories.css";
 import { categoryImages, categories } from "../../../constants";
 import SectionTitle from "../../../components/common/SectionTitle";
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
   return (
@@ -26,7 +27,9 @@ const Categories = () => {
         {categoryImages.map((image, idx) => (
           <SwiperSlide key={idx} className="relative">
             <img src={image} alt={`image of category ${idx + 1}`} />
-            <div className="absolute text-text font-cinzel text-xl font-medium  bg-gradient-to-t from-[#00000050] to-transparent w-full py-10">{categories[idx]}</div>
+            <div className="absolute text-text font-cinzel text-xl font-medium  bg-gradient-to-t from-[#00000050] to-transparent w-full py-10">
+              <Link to={`/shop/${categories[idx].toLowerCase()}`}>{categories[idx]}</Link>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

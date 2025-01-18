@@ -31,7 +31,7 @@ const Menu = () => {
         cover={true}
       />
       <SectionTitle title="Today's Offer" subtitle="Don't miss" />
-      <Offer menu={offered} />
+      <Offer menu={offered} path="/shop" />
       <Spacer height="h-16" />
 
       {/* Dessert category menu offers */}
@@ -43,7 +43,7 @@ const Menu = () => {
         fixed={true}
       />
       <Spacer height="h-16" />
-      <Offer menu={dessert} />
+      <Offer menu={dessert} path="/shop/dessert" />
       <Spacer height="h-16" />
 
       {/* Pizza category menu offers */}
@@ -55,7 +55,7 @@ const Menu = () => {
         fixed={true}
       />
       <Spacer height="h-16" />
-      <Offer menu={pizza} />
+      <Offer menu={pizza} path="/shop/pizza" />
       <Spacer height="h-16" />
 
       {/* Salad category menu offers */}
@@ -67,7 +67,7 @@ const Menu = () => {
         fixed={true}
       />
       <Spacer height="h-16" />
-      <Offer menu={salad} />
+      <Offer menu={salad} path="/shop/salad" />
       <Spacer height="h-16" />
 
       {/* Soup category menu offers */}
@@ -79,7 +79,7 @@ const Menu = () => {
         fixed={true}
       />
       <Spacer height="h-16" />
-      <Offer menu={soup} />
+      <Offer menu={soup} path="/shop/soup" />
       <Spacer height="h-16" />
     </>
   );
