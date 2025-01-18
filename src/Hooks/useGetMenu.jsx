@@ -6,7 +6,7 @@ const useGetMenu = () => {
 
   useEffect(() => {
     try {
-      fetch("../../src/constants/Menu.json")
+      fetch(`${import.meta.env.VITE_SERVER}/menu`)
         .then((res) => res.json())
         .then((data) => setMenu(data));
     } catch (err) {
