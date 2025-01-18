@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { authAssets } from "./../../constants/index";
 import {
   loadCaptchaEnginge,
@@ -6,8 +6,17 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { Helmet } from "react-helmet-async";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
@@ -22,7 +31,20 @@ const Login = () => {
 
     // validate captcha
     if (validateCaptcha(captcha)) {
-      console.log("captcha is correct");
+      signIn(email, password).then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success("User Login Successful.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "light",
+          transition: Bounce,
+        });
+        form.reset();
+        navigate(from, { replace: true });
+      });
     } else {
       console.log("please try again");
     }
@@ -113,12 +135,12 @@ const Login = () => {
           <div className="text-center mt-4">
             <p>
               New here?{" "}
-              <a
-                href="#register"
+              <Link
+                to="/auth/signup"
                 className="text-golden font-semibold hover:underline"
               >
                 Create a New Account
-              </a>
+              </Link>
             </p>
           </div>
 
@@ -140,6 +162,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 };
