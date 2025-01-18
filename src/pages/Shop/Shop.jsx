@@ -42,6 +42,8 @@ const Shop = () => {
             <Tab>Drinks</Tab>
           </TabList>
 
+          <Spacer height="h-16" />
+
           <TabPanel>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
               {salad.map((item) => (

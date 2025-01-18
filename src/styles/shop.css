@@ -9,10 +9,9 @@
   border-bottom: none;
   margin: 0 0 10px;
   padding: 0;
-  text-align: center;
   display: flex;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .react-tabs__tab {
@@ -31,11 +30,11 @@
 .react-tabs__tab--selected {
   background: #fff;
   border-color: #aaa;
-  color: #D99904;
+  color: #d99904;
   border-radius: 5px 5px 0 0;
   font-weight: bold;
   border: none;
-  border-bottom: 3px solid #D99904;
+  border-bottom: 3px solid #d99904;
 }
 
 .react-tabs__tab:focus {
@@ -50,4 +49,20 @@
   right: -4px;
   bottom: -5px;
   /* background: #000; */
+}
+
+@media screen and (max-width: 500px) {
+  .react-tabs__tab-list {
+    gap: 1.25rem;
+  }
+  .react-tabs__tab {
+    font-size: 0.75rem;
+  }
+}
+@media screen and (max-width: 350px) {
+  .react-tabs__tab-list {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    justify-content: start;
+  }
 }
