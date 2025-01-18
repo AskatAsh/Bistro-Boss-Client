@@ -31,3 +31,12 @@ export const homeBannerContent = {
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, libero accusamus laborum deserunt ratione dolor officiis praesentium! Deserunt magni aperiam dolor eius dolore at, nihil iusto ducimus incidunt quibusdam nemo.",
     bgImage: homeBannerImage,
 }
+
+// import and export login and sign up page images and icons
+import loginImage from "../../src/assets/others/authentication2.png";
+import loginBackground from "../../src/assets/others/authentication.png";
+import facebookIcon from "../../src/assets/icon/facebook.svg";
+import googleIcon from "../../src/assets/icon/google.svg";
+import githubIcon from "../../src/assets/icon/github.svg";
+
+export const authAssets = {loginImage, loginBackground, facebookIcon, googleIcon, githubIcon};
