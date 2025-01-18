@@ -21,7 +21,7 @@ import slide5 from '../../src/assets/home/slide5.jpg'
 export const categoryImages = [slide1, slide2, slide3, slide4, slide5];
 
 // export category names
-export const categories = ["Salad", "Pizza", "Soup", "Desert", "Fruits"];
+export const categories = ["Salad", "Pizza", "Soup", "Dessert", "Fruits"];
 
 // import home banner background image and export with content
 import homeBannerImage from '../../src/assets/home/chef-service.jpg'

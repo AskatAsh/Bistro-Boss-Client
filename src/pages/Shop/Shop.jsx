@@ -11,15 +11,16 @@ import useGetMenu from "../../Hooks/useGetMenu";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {
-  const [tabIndex, setTabIndex] = useState(0);
+  const { category } = useParams();
+  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex !== -1 ? initialIndex : 0);
   const [menu] = useGetMenu();
   const dessert = menu.filter((item) => item.category === "dessert");
   const pizza = menu.filter((item) => item.category === "pizza");
   const salad = menu.filter((item) => item.category === "salad");
   const soup = menu.filter((item) => item.category === "soup");
   const drinks = menu.filter((item) => item.category === "drinks");
-  const { category } = useParams();
-  console.log(category);
 
   return (
     <>
@@ -40,8 +41,8 @@ const Shop = () => {
           <TabList>
             <Tab>Salad</Tab>
             <Tab>Pizza</Tab>
-            <Tab>Soups</Tab>
-            <Tab>Desserts</Tab>
+            <Tab>Soup</Tab>
+            <Tab>Dessert</Tab>
             <Tab>Drinks</Tab>
           </TabList>
 
