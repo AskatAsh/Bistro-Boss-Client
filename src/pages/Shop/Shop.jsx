@@ -6,21 +6,48 @@ import Spacer from "../../components/common/Spacer";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "../../styles/shop.css";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useGetMenu from "../../Hooks/useGetMenu";
 import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 const Shop = () => {
+  const [menuItems, setMenuItems] = useState([]);
   const { category } = useParams();
-  const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
+  const categories = useMemo(
+    () => ["salad", "pizza", "soup", "dessert", "drinks"],
+    []
+  );
   const initialIndex = categories.indexOf(category);
-  const [tabIndex, setTabIndex] = useState(initialIndex !== -1 ? initialIndex : 0);
+  const [tabIndex, setTabIndex] = useState(
+    initialIndex !== -1 ? initialIndex : 0
+  );
   const [menu] = useGetMenu();
-  const dessert = menu.filter((item) => item.category === "dessert");
-  const pizza = menu.filter((item) => item.category === "pizza");
-  const salad = menu.filter((item) => item.category === "salad");
-  const soup = menu.filter((item) => item.category === "soup");
-  const drinks = menu.filter((item) => item.category === "drinks");
+
+  // swiper slider pagination custom bullets pagination
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + "</span>";
+    },
+  };
+
+  useEffect(() => {
+    const category = categories[tabIndex];
+    const items = menu.filter((item) => item.category === category);
+
+    let totalItems = [];
+    for (let i = 0; i < items.length; i += 6) {
+      totalItems.push(items.slice(i, i + 6));
+    }
+
+    setMenuItems(totalItems);
+  }, [tabIndex, categories, menu]);
 
   return (
     <>
@@ -39,50 +66,32 @@ const Shop = () => {
       <section>
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
-            <Tab>Salad</Tab>
-            <Tab>Pizza</Tab>
-            <Tab>Soup</Tab>
-            <Tab>Dessert</Tab>
-            <Tab>Drinks</Tab>
+            {categories.map((category, index) => (
+              <Tab key={index}>{category.toUpperCase()}</Tab>
+            ))}
           </TabList>
 
           <Spacer height="h-16" />
 
-          <TabPanel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-              {salad.map((item) => (
-                <ItemCard key={item._id} item={item} />
-              ))}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-              {pizza.map((item) => (
-                <ItemCard key={item._id} item={item} />
-              ))}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-              {soup.map((item) => (
-                <ItemCard key={item._id} item={item} />
-              ))}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-              {dessert.map((item) => (
-                <ItemCard key={item._id} item={item} />
-              ))}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-11/12 mx-auto">
-              {drinks.map((item) => (
-                <ItemCard key={item._id} item={item} />
-              ))}
-            </div>
-          </TabPanel>
+          {categories.map((category, index) => (
+            <TabPanel key={index}>
+              <Swiper
+                pagination={pagination}
+                modules={[Pagination]}
+                className="mySwiper"
+              >
+                {menuItems.map((menuItem, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-[1320px] w-full mx-auto">
+                      {menuItem.map((item) => (
+                        <ItemCard key={item._id} item={item} />
+                      ))}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </TabPanel>
+          ))}
         </Tabs>
       </section>
       <Spacer height="h-32" />
