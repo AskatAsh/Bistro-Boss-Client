@@ -1,13 +1,16 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
 import { HelmetProvider } from "react-helmet-async";
+import AuthProvider from "./providers/AuthProvider";
 
 function App() {
   return (
     <>
-      <HelmetProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </HelmetProvider>
+      <AuthProvider>
+        <HelmetProvider>
+          <RouterProvider router={router}></RouterProvider>
+        </HelmetProvider>
+      </AuthProvider>
     </>
   );
 }

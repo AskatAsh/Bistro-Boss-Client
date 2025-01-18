@@ -1,6 +1,29 @@
+import { useEffect } from "react";
 import { authAssets } from "./../../constants/index";
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 
 const Login = () => {
+
+  useEffect( () => {
+    loadCaptchaEnginge(6);
+  }, [])
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const captcha = form.captcha.value;
+    console.log(email, password, captcha);
+
+    // validate captcha
+    if(validateCaptcha(captcha)){
+      console.log("captcha is correct");
+    }else{
+      console.log("please try again");
+    }
+  }
+
   return (
     <section
       className="min-h-screen flex items-center justify-center"
@@ -25,13 +48,14 @@ const Login = () => {
         <div className="w-full lg:w-1/2 p-8">
           <h2 className="text-3xl font-bold text-center mb-8">Login</h2>
 
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
               </label>
               <input
                 type="email"
+                name="email"
                 id="email"
                 placeholder="Type here"
                 className="input input-bordered w-full"
@@ -47,6 +71,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 id="password"
                 placeholder="Enter your password"
                 className="input input-bordered w-full"
@@ -60,28 +85,15 @@ const Login = () => {
               >
                 Captcha
               </label>
-              <div className="flex flex-col items-start gap-1">
-                <input
-                  type="text"
-                  id="captcha"
-                  defaultValue="UAg1uo"
-                  className="input input-bordered w-full"
-                  readOnly
-                />
-                <button
-                  type="button"
-                  className="text-blue-800 hover:underline text-sm font-semibold"
-                >
-                  Reload Captcha
-                </button>
-              </div>
+              < LoadCanvasTemplate />
             </div>
 
             <div className="mb-4">
               <input
                 type="text"
+                name="captcha"
                 id="captcha"
-                placeholder="Type here"
+                placeholder="Type captcha above"
                 className="input input-bordered w-full mt-2"
               />
             </div>
