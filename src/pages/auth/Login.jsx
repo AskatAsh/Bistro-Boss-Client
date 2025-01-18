@@ -23,7 +23,7 @@ const Login = () => {
 
         {/* Right Side - Login Form */}
         <div className="w-full lg:w-1/2 p-8">
-          <h2 className="text-2xl font-bold text-center mb-8">Login</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">Login</h2>
 
           <form>
             <div className="mb-4">
