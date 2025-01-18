@@ -3,7 +3,8 @@ import { authAssets } from "./../../constants/index";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
-import { Bounce, ToastContainer, toast } from 'react-toastify';
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const SignUp = () => {
             closeOnClick: true,
             theme: "light",
             transition: Bounce,
-            });
+          });
           navigate("/");
         })
         .catch((error) => console.log(error));
@@ -49,6 +50,9 @@ const SignUp = () => {
         backgroundPosition: "center",
       }}
     >
+      <Helmet>
+        <title>Bistro Boss | Sign Up</title>
+      </Helmet>
       <div className="bg-transperant shadow-[0px_4px_8px_4px_rgba(0,_0,_0,_0.1)] rounded-lg w-full max-w-5xl flex flex-col lg:flex-row-reverse">
         {/* Left Side - Illustration */}
         <div className="hidden lg:flex items-center justify-center bg-transperant w-2/3 rounded-l-lg">

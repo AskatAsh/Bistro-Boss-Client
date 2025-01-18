@@ -1,12 +1,16 @@
 import { useEffect } from "react";
 import { authAssets } from "./../../constants/index";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-
-  useEffect( () => {
+  useEffect(() => {
     loadCaptchaEnginge(6);
-  }, [])
+  }, []);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,12 +21,12 @@ const Login = () => {
     console.log(email, password, captcha);
 
     // validate captcha
-    if(validateCaptcha(captcha)){
+    if (validateCaptcha(captcha)) {
       console.log("captcha is correct");
-    }else{
+    } else {
       console.log("please try again");
     }
-  }
+  };
 
   return (
     <section
@@ -34,6 +38,9 @@ const Login = () => {
         backgroundPosition: "center",
       }}
     >
+      <Helmet>
+        <title>Bistro Boss | Login</title>
+      </Helmet>
       <div className="bg-transperant shadow-[0px_4px_8px_4px_rgba(0,_0,_0,_0.1)] rounded-lg w-full max-w-5xl flex flex-col lg:flex-row">
         {/* Left Side - Illustration */}
         <div className="hidden lg:flex items-center justify-center bg-transperant w-2/3 rounded-l-lg">
@@ -85,7 +92,7 @@ const Login = () => {
               >
                 Captcha
               </label>
-              < LoadCanvasTemplate />
+              <LoadCanvasTemplate />
             </div>
 
             <div className="mb-4">
