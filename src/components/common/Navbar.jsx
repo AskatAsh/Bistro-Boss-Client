@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars, FaTimes, FaUserCircle, FaSignOutAlt } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../../src/assets/icon/cart-100.png";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Bounce, toast } from "react-toastify";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn] = useState(true);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success("Logged out Successfully.", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          theme: "light",
+          transition: Bounce,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
 
   const navlinks = (
     <>
@@ -53,7 +70,7 @@ const Navbar = () => {
       >
         Our Menu
       </NavLink>
-      {isLoggedIn ? (
+      {user && user?.email ? (
         <>
           <NavLink
             to="/shop"
@@ -70,7 +87,7 @@ const Navbar = () => {
             <img className="w-8" src={cartIcon} alt="shopping cart icon" />
           </NavLink>
           <button
-            onClick={() => setIsMenuOpen(false)}
+            onClick={handleLogOut}
             className="flex items-center gap-1 hover:text-accent"
           >
             <span className="max-[500px]:hidden uppercase font-medium text-base">
