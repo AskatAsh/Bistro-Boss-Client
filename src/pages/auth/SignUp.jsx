@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
   const {
@@ -16,24 +18,35 @@ const SignUp = () => {
   } = useForm();
 
   const handleSignUp = (data) => {
-    console.log(data);
-    console.log(data.email, data.password);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
-          console.log("user profile info updated");
-          reset();
-          toast.success("User created successfully.", {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            theme: "light",
-            transition: Bounce,
-          });
-          navigate("/");
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic
+            .post("/users", userInfo)
+            .then((res) => {
+              console.log(res);
+              if (res.data?.acknowledged && res.data?.insertedId) {
+                reset();
+                toast.success("User created successfully.", {
+                  position: "top-right",
+                  autoClose: 1500,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  theme: "light",
+                  transition: Bounce,
+                });
+                navigate("/");
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => console.log(error));
     });
