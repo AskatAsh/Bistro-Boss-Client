@@ -1,13 +1,12 @@
-import { useContext } from "react";
 import Button from "../common/Button";
 import { PropTypes } from "prop-types";
-import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 const ItemCard = ({ item }) => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const navigate = useNavigate();
   const { _id, image, name, recipe, price, category } = item;
 

@@ -1,4 +1,3 @@
-import { useContext, useEffect } from "react";
 import { authAssets } from "./../../constants/index";
 import {
   loadCaptchaEnginge,
@@ -7,11 +6,12 @@ import {
 } from "react-simple-captcha";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import useAuth from "../../Hooks/useAuth";
+import { useEffect } from "react";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 

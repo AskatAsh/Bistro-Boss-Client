@@ -1,14 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { authAssets } from "./../../constants/index";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../Hooks/useAuth";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useAuth();
   const {
     register,
     handleSubmit,
