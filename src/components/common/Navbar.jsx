@@ -70,22 +70,30 @@ const Navbar = () => {
       >
         Our Menu
       </NavLink>
+      <NavLink
+        to="/shop"
+        onClick={() => setIsMenuOpen(false)}
+        className={({ isActive }) =>
+          isActive
+            ? "text-accent flex items-center"
+            : "hover:text-accent transition-all duration-200"
+        }
+      >
+        <span className="max-[500px]:hidden uppercase font-medium text-base">
+          Our Shop{" "}
+        </span>
+      </NavLink>
       {user && user?.email ? (
         <>
           <NavLink
-            to="/shop"
+            to="/cart"
             onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent flex items-center"
-                : "hover:text-accent transition-all duration-200 flex items-center"
-            }
+            className="indicator"
           >
-            <span className="max-[500px]:hidden uppercase font-medium text-base">
-              Our Shop{" "}
-            </span>
+            <span className="indicator-item badge bg-red-600 text-text border-none p-1 text-xs">+0</span>
             <img className="w-8" src={cartIcon} alt="shopping cart icon" />
           </NavLink>
+
           <button
             onClick={handleLogOut}
             className="flex items-center gap-1 hover:text-accent"
@@ -95,6 +103,7 @@ const Navbar = () => {
             </span>
             <FaSignOutAlt className="text-xl cursor-pointer" />
           </button>
+
           <NavLink
             to="/profile"
             onClick={() => setIsMenuOpen(false)}
@@ -104,7 +113,7 @@ const Navbar = () => {
                 : "hover:text-accent transition-all duration-200 flex items-center"
             }
           >
-            <span className="uppercase font-medium mr-1 text-base">
+            <span className="uppercase font-medium mr-1 text-base sm:hidden">
               My Profile
             </span>
             <FaUserCircle className="text-2xl cursor-pointer hover:text-accent" />
