@@ -1,13 +1,14 @@
 import Button from "../common/Button";
 import { PropTypes } from "prop-types";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ItemCard = ({ item }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const { _id, image, name, recipe, price, category } = item;
 
   const handleAddToCart = () => {
@@ -22,8 +23,8 @@ const ItemCard = ({ item }) => {
     };
     if (user && user?.email) {
       // add item to cart using axios
-      axios
-        .post(`${import.meta.env.VITE_SERVER}/carts`, cartItem)
+      axiosSecure
+        .post("/carts", cartItem)
         .then((res) => {
           // console.log(res);
           if (res?.data?.acknowledged && res?.data?.insertedId) {
