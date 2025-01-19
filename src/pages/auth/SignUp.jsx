@@ -195,7 +195,7 @@ const SignUp = () => {
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
                 <img src={authAssets.facebookIcon} alt="facebook icon" />
               </button>
-              <button onClick={() => handleSocialLogin("google")} disabled={loading} className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
+              <button onClick={() => handleSocialLogin("google", "/")} disabled={loading} className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
                 <img src={authAssets.googleIcon} alt="google icon" />
               </button>
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">

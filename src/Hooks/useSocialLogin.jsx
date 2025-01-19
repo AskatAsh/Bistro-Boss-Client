@@ -12,7 +12,7 @@ const useSocialLogin = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleSocialLogin = async (provider) => {
+  const handleSocialLogin = async (provider, path = '/') => {
     if (loading) return;
     setLoading(true);
     setError(null);
@@ -42,7 +42,7 @@ const useSocialLogin = () => {
               theme: "light",
               transition: Bounce,
             });
-            navigate("/");
+            navigate(path);
           } else if (response.data?.loggedin) {
             toast.success("Successfully logged in.", {
               position: "top-right",
@@ -52,7 +52,7 @@ const useSocialLogin = () => {
               theme: "light",
               transition: Bounce,
             });
-            navigate("/");
+            navigate(path);
           }
           break;
         }
