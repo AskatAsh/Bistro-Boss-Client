@@ -5,8 +5,10 @@ import { Bounce, ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useSocialLogin from "../../Hooks/useSocialLogin";
 
 const SignUp = () => {
+  const { handleSocialLogin, loading } = useSocialLogin();
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { createUser, updateUserProfile } = useAuth();
@@ -17,6 +19,7 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
+  // sign up using email password
   const handleSignUp = (data) => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
@@ -192,7 +195,7 @@ const SignUp = () => {
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
                 <img src={authAssets.facebookIcon} alt="facebook icon" />
               </button>
-              <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
+              <button onClick={() => handleSocialLogin("google")} disabled={loading} className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
                 <img src={authAssets.googleIcon} alt="google icon" />
               </button>
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
