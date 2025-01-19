@@ -25,6 +25,7 @@ export default {
         footerbg1: '#1F2937',
         footerbg2: '#111827',
         golden: '#D99904',
+        darkgold: '#D1A054',
       },
     },
   },

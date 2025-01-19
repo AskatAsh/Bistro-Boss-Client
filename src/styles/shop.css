@@ -30,11 +30,11 @@
 .react-tabs__tab--selected {
   background: #fff;
   border-color: #aaa;
-  color: #d99904;
+  color: #D1A054;
   border-radius: 5px 5px 0 0;
   font-weight: bold;
   border: none;
-  border-bottom: 3px solid #d99904;
+  border-bottom: 3px solid #D1A054;
 }
 
 .react-tabs__tab:focus {
@@ -91,5 +91,5 @@
 
 .shop-swiper .swiper-pagination-bullet-active {
   color: #fff;
-  background: #D99904;
+  background: #D1A054;
 }
