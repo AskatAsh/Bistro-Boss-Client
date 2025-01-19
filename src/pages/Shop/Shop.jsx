@@ -78,7 +78,7 @@ const Shop = () => {
               <Swiper
                 pagination={pagination}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="shop-swiper"
               >
                 {menuItems.map((menuItem, idx) => (
                   <SwiperSlide key={idx}>

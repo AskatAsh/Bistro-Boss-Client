@@ -67,26 +67,18 @@
   }
 }
 
-/* swiper js custom styles */
-
-/* .swiper {
-  overflow-x: hidden;
-  overflow-y: visible;
-} */
-
-.swiper-slide {
+/* custom swiper styles */
+.shop-swiper .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
   padding-bottom: 4rem;
-
-  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.swiper-pagination-bullet {
+.shop-swiper .swiper-pagination-bullet {
   width: 20px;
   height: 20px;
   text-align: center;
@@ -97,7 +89,7 @@
   background: rgba(0, 0, 0, 0.2);
 }
 
-.swiper-pagination-bullet-active {
+.shop-swiper .swiper-pagination-bullet-active {
   color: #fff;
   background: #D99904;
 }

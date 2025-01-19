@@ -23,10 +23,11 @@ const Categories = () => {
             delay: 2500,
             disableOnInteraction: false,
         }}
+        className="category-swiper"
       >
         {categoryImages.map((image, idx) => (
           <SwiperSlide key={idx} className="relative">
-            <img src={image} alt={`image of category ${idx + 1}`} />
+            <img src={image} alt={`image of category ${categories[idx]}`} />
             <div className="absolute text-text font-cinzel text-xl font-medium  bg-gradient-to-t from-[#00000050] to-transparent w-full py-10">
               <Link to={`/shop/${categories[idx].toLowerCase()}`}>{categories[idx]}</Link>
             </div>
