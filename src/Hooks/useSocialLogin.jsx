@@ -22,19 +22,29 @@ const useSocialLogin = () => {
 
       switch (provider) {
         case "google": {
-        //   console.log("Starting Google sign-in...");
+          //   console.log("Starting Google sign-in...");
           const result = await googleSignIn();
           userInfo = {
             email: result.user?.email,
             name: result.user?.displayName,
           };
-        //   console.log("Google sign-in successful:", userInfo);
+          //   console.log("Google sign-in successful:", userInfo);
 
           // Save user info to database
           const response = await axiosPublic.post("/users", userInfo);
         //   console.log("User info saved:", response.data);
           if (response.data?.acknowledged) {
             toast.success("User created successfully.", {
+              position: "top-right",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: true,
+              theme: "light",
+              transition: Bounce,
+            });
+            navigate("/");
+          } else if (response.data?.loggedin) {
+            toast.success("Successfully logged in.", {
               position: "top-right",
               autoClose: 1500,
               hideProgressBar: false,
@@ -58,7 +68,7 @@ const useSocialLogin = () => {
           break;
 
         default:
-        //   console.error("Unsupported login method:", provider);
+          //   console.error("Unsupported login method:", provider);
           setError("Unsupported login method:");
       }
     } catch (err) {
