@@ -4,10 +4,12 @@ import { Link, NavLink } from "react-router-dom";
 import cartIcon from "../../../src/assets/icon/cart-100.png";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Bounce, toast } from "react-toastify";
+import useGetCart from "../../Hooks/useGetCart";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useGetCart();
 
   const handleLogOut = () => {
     logOut()
@@ -90,7 +92,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="indicator"
           >
-            <span className="indicator-item badge bg-red-600 text-text border-none p-1 text-xs">+0</span>
+            <span className="indicator-item badge bg-red-600 text-text border-none p-1 text-xs">+{cart.length}</span>
             <img className="w-8" src={cartIcon} alt="shopping cart icon" />
           </NavLink>
 

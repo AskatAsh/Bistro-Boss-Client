@@ -4,11 +4,13 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useGetCart from "../../Hooks/useGetCart";
 
 const ItemCard = ({ item }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
+  const [, refetch] = useGetCart();
   const { _id, image, name, recipe, price, category } = item;
 
   const handleAddToCart = () => {
@@ -33,6 +35,8 @@ const ItemCard = ({ item }) => {
               text: "Added to cart successfully!",
               icon: "success",
             });
+            // refetch to update cart item count
+            refetch();
           }
         })
         .catch((error) => {
@@ -50,10 +54,12 @@ const ItemCard = ({ item }) => {
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Go to Login"
+        confirmButtonText: "Go to Login",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate('/auth/login', { state: { from: {pathname: `/shop/${category}`} } });
+          navigate("/auth/login", {
+            state: { from: { pathname: `/shop/${category}` } },
+          });
         }
       });
     }
