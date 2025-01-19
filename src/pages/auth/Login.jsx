@@ -46,7 +46,14 @@ const Login = () => {
         navigate(from, { replace: true });
       });
     } else {
-      console.log("please try again");
+      toast.error("Invalid captcha! Try again.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
