@@ -88,7 +88,7 @@ const Navbar = () => {
       {user && user?.email ? (
         <>
           <NavLink
-            to="/cart"
+            to="/dashboard/cart"
             onClick={() => setIsMenuOpen(false)}
             className="indicator"
           >
