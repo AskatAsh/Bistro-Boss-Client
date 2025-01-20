@@ -3,7 +3,7 @@ import useAuth from "../Hooks/useAuth";
 import useIsAdmin from "../Hooks/useIsAdmin";
 import { PropTypes } from "prop-types";
 
-const AdminRoute = (children) => {
+const AdminRoute = ({children}) => {
   const { user, loading } = useAuth();
   const [isAdmin, isAdminLoading] = useIsAdmin();
   const location = useLocation();

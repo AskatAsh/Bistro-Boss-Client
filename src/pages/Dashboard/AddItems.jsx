@@ -3,19 +3,16 @@ import SectionTitle from "../../components/common/SectionTitle";
 import { useForm } from "react-hook-form";
 
 const AddItems = () => {
-    const {register, handleSubmit} = useForm();
-    const onSubmit = async (data) => {
-        console.log(data);
-    }
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    console.log(data);
+  };
   return (
-    <div>
-      <SectionTitle
-        title="add an item"
-        subtitle="What's new?"
-      ></SectionTitle>
-      <div>
+    <section>
+      <SectionTitle title="add an item" subtitle="What's new?"></SectionTitle>
+      <div className="bg-dark7 p-6 rounded-md w-11/12 mx-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="form-control w-full my-6">
+          <div className="form-control w-full mb-6">
             <label className="label">
               <span className="label-text">Recipe Name*</span>
             </label>
@@ -29,7 +26,7 @@ const AddItems = () => {
           </div>
           <div className="flex gap-6">
             {/* category */}
-            <div className="form-control w-full my-6">
+            <div className="form-control w-full mb-6">
               <label className="label">
                 <span className="label-text">Category*</span>
               </label>
@@ -50,7 +47,7 @@ const AddItems = () => {
             </div>
 
             {/* price */}
-            <div className="form-control w-full my-6">
+            <div className="form-control w-full mb-6">
               <label className="label">
                 <span className="label-text">Price*</span>
               </label>
@@ -82,12 +79,12 @@ const AddItems = () => {
             />
           </div>
 
-          <button className="btn">
+          <button className="btn bg-gradient-to-r from-darkgold to-darkgold/80">
             Add Item <FaUtensils className="ml-4"></FaUtensils>
           </button>
         </form>
       </div>
-    </div>
+    </section>
   );
 };
 
