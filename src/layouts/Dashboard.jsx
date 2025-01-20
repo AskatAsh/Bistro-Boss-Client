@@ -99,13 +99,13 @@ const Dashboard = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/salad">
+            <NavLink to="/shop">
               <FaSearch></FaSearch>
               Menu
             </NavLink>
           </li>
           <li>
-            <NavLink to="/order/contact">
+            <NavLink to="/shop/contact">
               <FaEnvelope></FaEnvelope>
               Contact
             </NavLink>
