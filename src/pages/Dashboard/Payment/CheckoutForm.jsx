@@ -48,7 +48,7 @@ const CheckoutForm = () => {
     });
 
     if (error) {
-      console.log("Error: ", error);
+      // console.log("Error: ", error);
       setErrorMessage(error.message);
     } else {
       console.log("Payment Method: ", paymentMethod);
@@ -68,10 +68,10 @@ const CheckoutForm = () => {
       });
 
     if (confirmError) {
-      console.log("confirm error: ", confirmError);
+      // console.log("confirm error: ", confirmError);
       setErrorMessage(confirmError.message);
     } else {
-      console.log("payment intent: ", paymentIntent);
+      // console.log("payment intent: ", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         console.log(paymentIntent.id);
       }
@@ -88,7 +88,7 @@ const CheckoutForm = () => {
     };
 
     const res = await axiosSecure.post("/payments", payment);
-    console.log("Payment done: ", res);
+    // console.log("Payment done: ", res);
 
     // show success message
     refetch();

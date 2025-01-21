@@ -5,11 +5,13 @@ import cartIcon from "../../../src/assets/icon/cart-100.png";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Bounce, toast } from "react-toastify";
 import useGetCart from "../../Hooks/useGetCart";
+import useIsAdmin from "../../Hooks/useIsAdmin";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useGetCart();
+  const [isAdmin] = useIsAdmin();
 
   const handleLogOut = () => {
     logOut()
@@ -92,7 +94,9 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
             className="indicator"
           >
-            <span className="indicator-item badge bg-red-600 text-text border-none p-1 text-xs">+{cart.length}</span>
+            <span className="indicator-item badge bg-red-600 text-text border-none p-1 text-xs">
+              +{cart.length}
+            </span>
             <img className="w-8" src={cartIcon} alt="shopping cart icon" />
           </NavLink>
 
@@ -107,13 +111,15 @@ const Navbar = () => {
           </button>
 
           <NavLink
-            to="/profile"
-            onClick={() => setIsMenuOpen(false)}
-            className={({ isActive }) =>
-              isActive
-                ? "text-accent flex items-center"
-                : "hover:text-accent transition-all duration-200 flex items-center"
+            to={
+              user?.email
+                ? isAdmin
+                  ? "/dashboard/adminDashboard"
+                  : "/dashboard/userDashboard"
+                : "/dashboard/userDashboard"
             }
+            onClick={() => setIsMenuOpen(false)}
+            className="hover:text-accent transition-all duration-200 flex items-center"
           >
             <span className="uppercase font-medium mr-1 text-base sm:hidden">
               My Profile

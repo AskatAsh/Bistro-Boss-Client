@@ -16,6 +16,8 @@ import ManageItems from "../pages/Dashboard/ManageItems";
 import UpdateItem from "../pages/Dashboard/UpdateItem";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory";
+import UserDashboard from "../pages/Dashboard/UserDashboard";
+import AdminDashboard from "../pages/Dashboard/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -74,7 +76,19 @@ const router = createBrowserRouter([
         path: "paymentHistory",
         element: <PaymentHistory />,
       },
+      {
+        path: "userDashboard",
+        element: <UserDashboard />,
+      },
       // admin only routes
+      {
+        path: "adminDashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboard />
+          </AdminRoute>
+        ),
+      },
       {
         path: "users",
         element: (
@@ -106,7 +120,8 @@ const router = createBrowserRouter([
             <UpdateItem />
           </AdminRoute>
         ),
-        loader: ({params}) => fetch(`${import.meta.env.VITE_SERVER}/menu/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_SERVER}/menu/${params.id}`),
       },
     ],
   },

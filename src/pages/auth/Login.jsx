@@ -29,23 +29,24 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     const captcha = form.captcha.value;
-    console.log(email, password, captcha);
+    // console.log(email, password, captcha);
 
     // validate captcha
     if (validateCaptcha(captcha)) {
       signIn(email, password).then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast.success("User Login Successful.", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          theme: "light",
-          transition: Bounce,
-        });
-        form.reset();
-        navigate(from, { replace: true });
+        // console.log(result.user);
+        if (result.user) {
+          toast.success("User Login Successful.", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            theme: "light",
+            transition: Bounce,
+          });
+          form.reset();
+          navigate(from, { replace: true });
+        }
       });
     } else {
       toast.error("Invalid captcha! Try again.", {
@@ -161,7 +162,11 @@ const Login = () => {
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
                 <img src={authAssets.facebookIcon} alt="facebook icon" />
               </button>
-              <button onClick={() => handleSocialLogin("google", from)} disabled={loading} className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
+              <button
+                onClick={() => handleSocialLogin("google", from)}
+                disabled={loading}
+                className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]"
+              >
                 <img src={authAssets.googleIcon} alt="google icon" />
               </button>
               <button className="btn btn-circle hover:scale-105 hover:shadow-[0px_2px_6px_2px_rgba(0,_0,_0,_0.2)]">
