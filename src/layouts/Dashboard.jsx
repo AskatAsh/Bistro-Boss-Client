@@ -2,6 +2,7 @@ import {
   FaAd,
   FaBook,
   FaCalendar,
+  FaClock,
   FaEnvelope,
   FaHome,
   FaList,
@@ -44,6 +45,12 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaClock></FaClock>
+                  Payment History
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/dashboard/manageItems">
                   <FaList></FaList>
                   Manage Items
@@ -80,6 +87,12 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/cart">
                   <FaShoppingCart></FaShoppingCart>
                   My Cart ({cart.length})
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaClock></FaClock>
+                  Payment History
                 </NavLink>
               </li>
               <li>

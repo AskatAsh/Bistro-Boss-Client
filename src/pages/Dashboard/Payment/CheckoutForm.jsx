@@ -4,7 +4,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useGetCart from "../../../Hooks/useGetCart";
 import useAuth from "../../../Hooks/useAuth";
 // import { utcToZonedTime } from "date-fns-tz";
-import { Swal } from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
@@ -17,9 +17,7 @@ const CheckoutForm = () => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const currentDate = new Date();
   const navigate = useNavigate();
-  // console.log(utcToZonedTime(currentDate, "UTC"));
 
   useEffect(() => {
     if (totalPrice > 0) {
@@ -102,7 +100,7 @@ const CheckoutForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      // navigate("/dashboard/paymentHistory");
+      navigate("/dashboard/paymentHistory");
     }
   };
 
