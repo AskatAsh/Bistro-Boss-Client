@@ -50,7 +50,7 @@ const Dashboard = () => {
           <IoCloseCircleOutline size={32} />
         </button>
         <ul
-          className={`menu transition-all duration-300 sm:p-4 h-full md:w-52 lg:w-64 overflow-hidden absolute md:static z-50 bg-darkgold ${
+          className={`menu overflow-y-auto flex-nowrap transition-all duration-300 sm:p-4 h-full md:w-52 lg:w-64 overflow-hidden absolute md:static z-50 bg-darkgold ${
             openSidebar ? "w-52 sm:w-64 p-4" : "w-0 p-0"
           }`}
         >
