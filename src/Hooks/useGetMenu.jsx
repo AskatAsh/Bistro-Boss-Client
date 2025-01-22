@@ -22,7 +22,7 @@ const useGetMenu = () => {
     queryKey: ['menu'],
     queryFn: async() => {
       const res = await axiosPublic.get('/menu');
-      console.log(res);
+      // console.log(res);
       return res.data;
     }
   })
