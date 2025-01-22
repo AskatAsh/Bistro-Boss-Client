@@ -35,10 +35,10 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-between mb-8">
-        <h2 className="text-3xl font-semibold">Items: {cart.length}</h2>
-        <h2 className="text-3xl font-semibold">
+    <section>
+      <div className="flex items-center justify-between gap-5 mb-8">
+        <h2 className="text-lg sm:text-3xl font-semibold">Items: {cart.length}</h2>
+        <h2 className="text-lg sm:text-3xl font-semibold">
           Total Price: ${totalPrice.toFixed(2)}
         </h2>
         {cart.length > 0 ? (
@@ -53,8 +53,8 @@ const Cart = () => {
           </button>
         )}
       </div>
-      <div className="overflow-x-auto border">
-        <table className="table  w-full">
+      <div className="overflow-x-auto border-2 border-red-500">
+        <table className="table">
           {/* head */}
           <thead>
             <tr className="bg-darkgold text-white">
@@ -96,7 +96,7 @@ const Cart = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   );
 };
 
